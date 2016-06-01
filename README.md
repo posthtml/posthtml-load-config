@@ -192,32 +192,32 @@ SOFTWARE.
 [node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/michael-ciniawsky/posthtml-load-config.svg
-[deps-url]: https://david-dm.org/michael-ciniawsky/posthtml-load-config
+[deps]: https://david-dm.org/posthtml/posthtml-load-config.svg
+[deps-url]: https://david-dm.org/posthtml/posthtml-load-config
 
-[devdeps]: https://david-dm.org/michael-ciniawsky/posthtml-load-config/dev-status.svg
-[devdeps-url]: https://david-dm.org/michael-ciniawsky/posthtml-load-config#info=devDependencies
+[devdeps]: https://david-dm.org/posthtml/posthtml-load-config/dev-status.svg
+[devdeps-url]: https://david-dm.org/posthtml/posthtml-load-config#info=devDependencies
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
 
-[travis]: http://img.shields.io/travis/michael-ciniawsky/posthtml-load-config.svg?branch=master
-[travis-url]: https://travis-ci.org/michael-ciniawsky/posthtml-load-config?branch=master
+[travis]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=master
+[travis-url]: https://travis-ci.org/posthtml/posthtml-load-config?branch=master
 
-[travis-rel]: http://img.shields.io/travis/michael-ciniawsky/posthtml-load-config.svg?branch=release/1.0.0
-[travis-rel-url]:https://travis-ci.org/michael-ciniawsky/posthtml-load-config?branch=release/1.0.0
+[travis-rel]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=release/1.0.0
+[travis-rel-url]:https://travis-ci.org/posthtml/posthtml-load-config?branch=release/1.0.0
 
-[travis-dev]: http://img.shields.io/travis/michael-ciniawsky/posthtml-load-config.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/michael-ciniawsky/posthtml-load-config?branch=develop
+[travis-dev]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=develop
+[travis-dev-url]: https://travis-ci.org/posthtml/posthtml-load-config?branch=develop
 
-[cover]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-load-config/badge.svg?branch=master
-[cover-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-load-config?branch=master
+[cover]: https://coveralls.io/repos/github/posthtml/posthtml-load-config/badge.svg?branch=master
+[cover-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=master
 
-[cover-rel]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-load-config/badge.svg?branch=release/1.0.0
-[cover-rel-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-load-config?branch=release/1.0.0
+[cover-rel]: https://coveralls.io/repos/github/posthtml/posthtml-load-config/badge.svg?branch=release/1.0.0
+[cover-rel-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=release/1.0.0
 
 [cover-dev]: https://coveralls.io/repos/github/michael-ciniawsk/posthtml-load-config/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-load-config?branch=develop
+[cover-dev-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=develop
 
-[license]: https://img.shields.io/github/license/michael-ciniawsky/posthtml-load-config.svg
-[license-url]: https://raw.githubusercontent.com/michael-ciniawsky/posthtml-load-config/master/LICENSE
+[license]: https://img.shields.io/github/license/posthtml/posthtml-load-config.svg
+[license-url]: https://raw.githubusercontent.com/posthtml/posthtml-load-config/master/LICENSE
