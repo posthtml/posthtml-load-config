@@ -1,6 +1,6 @@
 {
   "name": "posthtml-load-config",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha2",
   "description": "Autoload Config for PostHTML",
   "engines": {
     "node": ">=4"
@@ -65,11 +65,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michael-ciniawsky/posthtml-load-config.git"
+    "url": "git+https://github.com/posthtml/posthtml-load-config.git"
   },
   "bugs": {
-    "url": "https://github.com/michael-ciniawsky/posthtml-load-config/issues"
+    "url": "https://github.com/posthtml/posthtml-load-config/issues"
   },
-  "homepage": "https://github.com/michael-ciniawsky/posthtml-load-config#readme",
+  "homepage": "https://github.com/posthtml/posthtml-load-config#readme",
   "license": "MIT"
 }
