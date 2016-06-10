@@ -6,8 +6,10 @@
 
 const config = require('cosmiconfig')
 
+const loadOptions = require('posthtml-load-options/lib/loadOptions')
 const loadPlugins = require('./lib/loadPlugins')
-const loadOptions = require('./lib/loadOptions')
+// const loadPlugins = require('posthtml-load-plugins/lib/loadPlugins')
+// const loadPackages = require('posthtml-load-package/lib/loadPackages')
 
 module.exports = function loadConfig (options) {
   return config('posthtml')

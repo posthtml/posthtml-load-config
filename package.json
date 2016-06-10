@@ -1,10 +1,8 @@
 {
   "name": "posthtml-load-config",
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0-alpha3",
   "description": "Autoload Config for PostHTML",
-  "engines": {
-    "node": ">=4"
-  },
+  "engines": {"node": ">=4", "npm": ">=3"},
   "main": "index.js",
   "scripts": {
     "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage test/node_modules",
@@ -13,7 +11,8 @@
     "start": "echo '=> Starting' && sudo npm test"
   },
   "dependencies": {
-    "cosmiconfig": "^1.1.0"
+    "cosmiconfig": "^1.1.0",
+    "posthtml-load-options": "^1.0.0-alpha"
   },
   "devDependencies": {
     "ava": "^0.15.1",
@@ -33,31 +32,21 @@
   "nyc": {
     "all": true,
     "require": "babel-register",
-    "include": [
-      "lib",
-      "test"
-    ],
-    "extension": [
-      ".js"
-    ]
+    "include": ["lib", "test"],
+    "extension": [".js"]
   },
   "standard": {
     "ignore": []
   },
   "babel": {
     "env": {
-      "development": {
-        "sourceMaps": "inline"
-      }
+      "development": {"sourceMaps": "inline"}
     },
-    "presets": [
-      "es2015"
-    ]
+    "presets": ["es2015"]
   },
   "keywords": [
     "PostHTML",
-    "Autoload",
-    "Config"
+    "PostHTML Config"
   ],
   "author": {
     "name": "Michael Ciniawky",
