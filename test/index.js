@@ -1,5 +1,5 @@
 // ------------------------------------
-// #POSTHTML - LOAD OPTIONS - TEST
+// #POSTHTML - LOAD CONFIG - TEST
 // ------------------------------------
 
 'use strict'
@@ -20,7 +20,6 @@ function writeSync (path, file) {
 }
 
 // Fixtures
-// const sml = readSync('./fixtures/index.sml', 'utf8')
 const html = readSync('./fixtures/index.html', 'utf8')
 
 test('Process HTML with default config', (t) => {
@@ -28,41 +27,30 @@ test('Process HTML with default config', (t) => {
     posthtml(plugins)
       .process(html, options)
       .then(result => {
-        writeSync('./expect/index.html')
-        t.equal(result.css, readSync('./expect/index.html'))
+        writeSync('./expect/index.html', result.html)
+        t.equal(result.html, readSync('./expect/index.html'))
       })
   })
 })
 
-// test('Process SML with default config', (t) => {
-//   posthtmlrc().then(({plugins, options}) => {
-//     posthtml(plugins)
-//       .process(sml, options)
-//       .then(result => {
-//         writeSync('./expect/index.sml.html')
-//         t.equal(result.css, readSync('./expect/index.sml.html'))
-//       })
-//   })
-// })
-
 test('Process HTML with custom config provided as string', (t) => {
-  posthtmlrc('posthtml.config.js').then(({plugins, options}) => {
+  posthtmlrc('./posthtml.config.js').then(({plugins, options}) => {
     posthtml(plugins)
       .process(html, options)
       .then(result => {
-        writeSync('./expect/index.html')
-        t.equal(result.css, readSync('./expect/index.html'))
+        writeSync('./expect/index.string.html', result.html)
+        t.equal(result.html, readSync('./expect/index.html'))
       })
   })
 })
 
 test('Process HTML with custom config provided as object', (t) => {
-  posthtmlrc('posthtmlrc.json').then(({plugins, options}) => {
+  posthtmlrc('./posthtmlrc.json').then(({plugins, options}) => {
     posthtml(plugins)
       .process(html, options)
       .then(result => {
-        writeSync('./expect/index.html')
-        t.equal(result.css, readSync('./expect/index.html'))
+        writeSync('./expect/index.object.html', result.html)
+        t.equal(result.html, readSync('./expect/index.html'))
       })
   })
 })

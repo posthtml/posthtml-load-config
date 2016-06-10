@@ -1,12 +1,9 @@
 {
-  "parser": "postcss-scss",
-  "map": "inline",
-  "from": "fixtures/index.scss",
-  "to": "results/index.scss.css",
+  "sync": false,
+  "skipParse": false,
   "plugins": {
-    "potscss-import": null,
-    "postcss-nested": null,
-    "postcss-bem": {
+    "posthtml-import": null,
+    "posthtml-bem": {
       "elemPrefix": "__",
       "modPrefix": "--",
       "modDlmtr": "-"
