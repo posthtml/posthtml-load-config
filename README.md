@@ -32,21 +32,21 @@ npm i -D posthtml-plugin
 
 After installing your plugins there a two common ways to declare your plugins and options.
 
-- Create **posthtml** section in your projects **package.json**.
-- Create a **posthtml.config.js**  or  **posthtmlrc.json** file.
+- Create **posthtml** section in your projects **package.json**
+- Create a **posthtml.config.js**  or  **posthtmlrc.json** file
 
 ### Options
 
 Plugin **options** can either take ```false``` or an object literal ```{}```
 as value.
 
-```false```: Load plugin with no options (plugin defaults)
+- ```false```: Plugin defaults
 
-```[Object]```: Load plugin with given options
+- ```[Object]```: Plugin options
 
 ### Ordering
 
-Plugin **order** will be determined by declaration in plugins section.
+Plugin **order** will be determined by declaration in the plugins section.
 
 ```js
 posthtml: {
@@ -79,11 +79,11 @@ posthtml: {
 {
  "dependencies": {
    "posthtml-bem": "^0.2.2",
-   "posthtml-import": "^8.1.2"
+   "posthtml-import": "^8.1.2",
+   "sugarml": "0.0.1"
  },
  "posthtml": {
-   "sync": false,
-   "skipParse": false,
+   "parser": "sugarml",
    "plugins": {
      "posthtml-import": false,
      "posthtml-bem":  {
@@ -168,8 +168,10 @@ const config = {
 }
 
 posthtmlrc(config).then(({ plugins, options }) => {
-  posthtml(plugins) // [...loaded, require('posthtml-exp')() ]
-    .process(html, options) // { parser: require('sugarml'), sync: true }
+  posthtml(plugins)
+  // [...plugins, require('posthtml-exp')() ]
+    .process(html, options)
+    // { parser: require('sugarml'), sync: true }
     .then(result => console.log(result.html))
 }))
 ```
