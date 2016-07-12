@@ -1,31 +1,27 @@
 [![NPM][npm]][npm-url]
-[![Node][node]][node-url]
-[![Dependencies][deps]][deps-url]
-[![DevDependencies][devdeps]][devdeps-url]
+[![Deps][deps]][deps-url]
+[![Tests][travis]][travis-url]
+[![Coverage][cover]][cover-url]
 [![Standard Code Style][style]][style-url]
 
-# PostHTML Load Config <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+<div align="center">
+  <a href="https://github.com/posthtml/posthtml">
+    <img width="180" height="180"
+      src="http://posthtml.github.io/posthtml/logo.svg">
+  </a>
+  <h1>Load Config Plugin</h1>
+  <p>Autoloads the common config for PostHTML<p>
+</div>
 
-## Status
-
-| Branch               | Build                     | Coverage                 |
-|:--------------------:|:-------------------------:|:------------------------:|
-|  Master              | ![travis]                 | ![cover]                 |
-|  Release/v1.0.0      | ![travis-rel]             | ![cover-rel]             |
-
-## Install
+<h2 align="center">Install</h2>
 
 ```bash
 npm i -D posthtml-load-config
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
 
-[PostHTML Plugins](http://maltsev.github.io/posthtml-plugins/)
-
-Plugins will be loaded directly from your projects ***package.json*** file.
-
-Install them as usual with as deps/devDeps.
+Install plugin as usual and make sure saving them to your ***package.json*** dependencies and/or devDependencies.
 
 ```
 npm i -S posthtml-plugin
@@ -36,38 +32,48 @@ npm i -D posthtml-plugin
 
 After installing your plugins there a two common ways to declare your plugins and options.
 
-- Create **posthtml.plugins** section in your projects **package.json**.
+- Create **posthtml** section in your projects **package.json**.
 - Create a **posthtml.config.js**  or  **posthtmlrc.json** file.
 
-## Options
+### Options
 
-Plugin **options** can either take ```null``` or an object ```{/* options */}```
+Plugin **options** can either take ```false``` or an object literal ```{}```
 as value.
 
-```null``` : Load plugin with no options (plugin defaults).
+```false```: Load plugin with no options (plugin defaults)
 
-```[Object]``` : Load plugin with given options.
+```[Object]```: Load plugin with given options
 
-## Ordering
+### Ordering
 
 Plugin **order** will be determined by declaration in plugins section.
 
 ```js
-plugins: {
-  'posthtml-plugin1': null,
-  'posthtml-plugin2': null,
-  'posthtml-plugin3': {/* options */}
+posthtml: {
+  parser: 'sugarml',
+  plugins: {
+    'posthtml-plugin1': false,
+    'posthtml-plugin2': false,
+    'posthtml-plugin3': {}
+  }
 }
 
-=> [
-    require('posthtml-plugin1')(),
-    require('posthtml-plugin2')(),
-    require('posthtml-plugin3')(options)
-   ]
+// Loaded Options Setup
+{
+  parser: require('sugarml'),
+}
+
+// Loaded Plugin Setup
+[
+  require('posthtml-plugin1')(),
+  require('posthtml-plugin2')(),
+  require('posthtml-plugin3')(options)
+]
 ```
 
-## Examples
-#### package.json
+<h2 align="center">Examples</h2>
+
+### package.json
 
 ```json
 {
@@ -79,7 +85,7 @@ plugins: {
    "sync": false,
    "skipParse": false,
    "plugins": {
-     "posthtml-import": null,
+     "posthtml-import": false,
      "posthtml-bem":  {
        "elemPrefix": "__",
        "modPrefix": "--",
@@ -90,14 +96,13 @@ plugins: {
 }
 ```
 
-#### posthtml.config.js
+### posthtml.config.js
 
 ```js
-module.exports = {
-  sync: false,
-  skipParse: false,
+export default {
+  parser: 'sugarml',
   plugins: {
-    'posthtml-import': null,
+    'posthtml-import': false,
     'posthtml-bem':  {
       elemPrefix: '__',
       modPrefix: '--',
@@ -106,14 +111,13 @@ module.exports = {
   }
 }
 ```
-#### posthtmlrc.json
+### posthtmlrc.json
 
 ```json
 {
-  "sync": false,
-  "skipParse": false,
+  "parser": "sugarml",
   "plugins": {
-    "posthtml-import": null,
+    "posthtml-import": false,
     "posthtml-bem":  {
       "elemPrefix": "__",
       "modPrefix": "--",
@@ -123,8 +127,9 @@ module.exports = {
 }
 ```
 
-## Usage
-#### Default
+<h2 align="center">Usage</h2>
+
+### Default
 
 ```js
 'use strict'
@@ -132,18 +137,18 @@ module.exports = {
 const fs = require('fs')
 
 const posthtml = require('posthtml')
-const posthtmlrc = require('posthtml-load-config')()
+const posthtmlrc = require('posthtml-load-config')
 
 const html = fs.readFileSync('./index.html', 'utf-8')
 
-posthtmlrc.then(({ plugins, options }) => {
+posthtmlrc().then(({ plugins, options }) => {
   posthtml(plugins)
     .process(html, options)
     .then(result => console.log(result.html))
 }))
 ```
 
-#### Custom
+### Custom
 
 ```js
 'use strict'
@@ -151,22 +156,29 @@ posthtmlrc.then(({ plugins, options }) => {
 const fs = require('fs')
 
 const posthtml = require('posthtml')
-const posthtmlrc = require('posthtml-load-config')('./path/to/posthtmlrc.json')
+const posthtmlrc = require('posthtml-load-config')
 
 const html = fs.readFileSync('./index.html', 'utf-8')
 
-posthtmlrc.then(({ plugins, options }) => {
-  posthtml(plugins)
-    .process(html, options)
+const config = {
+  sync: true,
+  plugins: {
+    'posthtml-exp': false
+  }
+}
+
+posthtmlrc(config).then(({ plugins, options }) => {
+  posthtml(plugins) // [...loaded, require('posthtml-exp')() ]
+    .process(html, options) // { parser: require('sugarml'), sync: true }
     .then(result => console.log(result.html))
 }))
 ```
 
-## LICENSE [![License MIT][license]][license-url]
+<h2 align="center">LICENSE</h2>
 
 > License (MIT)
 
-> Copyright (c) 2016 Michael Ciniawsky
+> Copyright (c) 2016 PostHTML Michael Ciniawsky <michael.ciniawsky@gmail.com>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -189,14 +201,8 @@ SOFTWARE.
 [npm]: https://img.shields.io/npm/v/posthtml-load-config.svg
 [npm-url]: https://npmjs.com/package/posthtml-load-config
 
-[node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
-[node-url]: https://nodejs.org
-
 [deps]: https://david-dm.org/posthtml/posthtml-load-config.svg
 [deps-url]: https://david-dm.org/posthtml/posthtml-load-config
-
-[devdeps]: https://david-dm.org/posthtml/posthtml-load-config/dev-status.svg
-[devdeps-url]: https://david-dm.org/posthtml/posthtml-load-config#info=devDependencies
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
@@ -204,20 +210,5 @@ SOFTWARE.
 [travis]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=master
 [travis-url]: https://travis-ci.org/posthtml/posthtml-load-config?branch=master
 
-[travis-rel]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=release/1.0.0
-[travis-rel-url]:https://travis-ci.org/posthtml/posthtml-load-config?branch=release/1.0.0
-
-[travis-dev]: http://img.shields.io/travis/posthtml/posthtml-load-config.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/posthtml/posthtml-load-config?branch=develop
-
 [cover]: https://coveralls.io/repos/github/posthtml/posthtml-load-config/badge.svg?branch=master
 [cover-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=master
-
-[cover-rel]: https://coveralls.io/repos/github/posthtml/posthtml-load-config/badge.svg?branch=release/1.0.0
-[cover-rel-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=release/1.0.0
-
-[cover-dev]: https://coveralls.io/repos/github/michael-ciniawsk/posthtml-load-config/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/posthtml/posthtml-load-config?branch=develop
-
-[license]: https://img.shields.io/github/license/posthtml/posthtml-load-config.svg
-[license-url]: https://raw.githubusercontent.com/posthtml/posthtml-load-config/master/LICENSE
