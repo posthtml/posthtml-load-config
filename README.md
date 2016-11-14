@@ -11,7 +11,7 @@
   <a href="https://github.com/posthtml/posthtml">
     <img width="220" height="200" title="PosHTML"           src="http://posthtml.github.io/posthtml/logo.svg" hspace="20">
   </a>
-  <img width="140" height="120" title="Load Plugins" src="http://posthtml.github.io/posthtml-load-plugins/logo.svg">
+  <img width="140" height="120" title="Load Plugins" src="http://michael-ciniawsky.github.io/postcss-load-plugins/logo.svg">
   <h1>Load Config</h1>
   <p>Autoload Config for PostHTML<p>
 </div>
@@ -25,10 +25,10 @@ npm i -D posthtml-load-config
 <h2 align="center">Usage</h2>
 
 ```
-npm i -S|-D posthtml-plugin
+npm i -S|-D posthtml-plugin posthtml-plugin ...
 ```
 
-Install plugins and save them to your ***package.json*** dependencies/devDependencies.
+Install plugins and save them to your ***package.json***
 
 ### `package.json`
 
@@ -93,15 +93,16 @@ Root
 ```
 
 ```js
-module.exports = (ctx) => ({
-  parser: ctx.ext === '.sml' ? 'posthtml-sugarss' : false,
-  map: ctx.env === 'development' ? ctx.map : false,
-  from: ctx.from
-  to: ctx.to
-  plugins: {
-    'posthtml-plugin': ctx.plugin
+module.exports = (ctx) => {
+  return {
+    parser: ctx.ext === '.sml' ? 'posthtml-sugarml' : false,
+    from: ctx.from,
+    to: ctx.to,
+    plugins: {
+      'posthtml-plugin': ctx.plugin
+    }
   }
-})
+}
 ```
 
 Plugins can be loaded either using an `{Object}` or an `{Array}` in `config.plugins`.
@@ -109,24 +110,29 @@ Plugins can be loaded either using an `{Object}` or an `{Array}` in `config.plug
 ##### `{Object}`
 
 ```js
-module.exports = (ctx) => ({
-  ...options
-  plugins: {
-    'posthtml-plugin': ctx.plugin
+module.exports = (ctx) => {
+  return {
+    ...options,
+    plugins: {
+      'posthtml-plugin': ctx.plugin
+    }
   }
-})
+}
 ```
 
 ##### `{Array}`
 
 ```js
-module.exports = (ctx) => ({
-  ...options
-  plugins: [
-    require('posthtml-plugin')(ctx.plugin)
-  ]
-})
+module.exports = (ctx) => {
+  return {
+    ...options,
+    plugins: [
+      require('posthtml-plugin')(ctx.plugin)
+    ]
+  }
+}
 ```
+
 > :warning: When using an Array, make sure to `require()` them.
 
 <h2 align="center">Options</h2>
@@ -134,19 +140,19 @@ module.exports = (ctx) => ({
 **`parser`**:
 
 ```js
-parser: 'sugarss'
+parser: 'posthtml-sugarml'
 ```
 
 **`from`**:
 
 ```js
-from: 'path/to/src.css'
+from: 'path/to/src/file.sml'
 ```
 
 **`to`**:
 
 ```js
-to: 'path/to/dest.css'
+to: 'path/to/dest/file.html'
 ```
 
 **`render`**:
@@ -203,8 +209,8 @@ When using a function `(posthtml.config.js)`, it is possible to pass context to 
 ```js
 module.exports = (ctx) => ({
   parser: ctx.ext === '.sml' ? 'posthtml-sugarml' : false,
-  from: ctx.from
-  to: ctx.to
+  from: ctx.from,
+  to: ctx.to,
   plugins: {
     posthtml-include: {},
     posthtml-expressions: { locals: ctx.locals },
@@ -319,6 +325,7 @@ module.exports = (env) => {
    <tr>
     <td align="center">
       <img width="150 height="150"  src="https://avatars.githubusercontent.com/u/5419992?v=3&s=150">
+      <br>
       <a href="https://github.com/michael-ciniawsky">Michael Ciniawsky</a>
     </td>
    </tr>
