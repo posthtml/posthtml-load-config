@@ -1,0 +1,12 @@
+module.exports = (ctx) => {
+  return {
+    parser: 'posthtml-sugarml',
+    from: './fixtures/index.sml',
+    to: './expect/index.html',
+    plugins: {
+      'posthtml-include': false,
+      'posthtml-content': false,
+      'htmlnano': ctx.env === 'production' ? {} : false
+    }
+  }
+}
