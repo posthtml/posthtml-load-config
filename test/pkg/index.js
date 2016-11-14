@@ -32,7 +32,7 @@ function posthtml (config, fix, log) {
 
 const posthtmlrc = require('../..')
 
-test('package.json - {Object} - Parser', (t) => {
+test('package.json - {Object} - Parser SML', (t) => {
   const ctx = {}
 
   const parser = require('posthtml-sugarml')()
