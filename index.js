@@ -14,6 +14,7 @@ const loadOptions = require('posthtml-load-options/lib/options.js')
 /**
  * @author Michael Ciniawsky (@michael-ciniawsky) <michael.ciniawsky@gmail.com>
  * @description Autoload Config for PostHTML
+ * @license MIT
  *
  * @module posthtml-load-config
  * @version 1.0.0
@@ -22,7 +23,7 @@ const loadOptions = require('posthtml-load-options/lib/options.js')
  * @requires posthtml-load-options
  * @requires posthtml-load-plugins
  *
- * @method postcssrc
+ * @method posthtmlrc
  *
  * @param  {Object} ctx Context
  * @param  {String} path Config Directory
