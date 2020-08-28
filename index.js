@@ -35,7 +35,7 @@ module.exports = function posthtmlrc (ctx, path, options) {
   const defaults = { cwd: process.cwd(), env: process.env.NODE_ENV }
 
   ctx = assign(defaults, ctx)
-  path = path || process.cwd()
+  path = path || ctx.cwd
   options = assign({}, options)
 
   if (ctx.env === undefined) {
@@ -46,9 +46,7 @@ module.exports = function posthtmlrc (ctx, path, options) {
     .load(path)
     .then((result) => {
       if (!result) {
-        console.log(
-          'PostHTML Config could not be loaded. Please check your PostHTML Config.'
-        )
+        throw new Error('PostHTML Config could not be loaded. Please check your PostHTML Config.');
       }
 
       return result ? result.config : {}

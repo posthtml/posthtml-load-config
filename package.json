@@ -1,37 +1,37 @@
 {
   "name": "posthtml-load-config",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Autoload Config for PostHTML",
   "engines": {
-    "node": ">=4",
-    "npm": ">=3"
+    "node": ">=10"
   },
   "main": "index.js",
   "scripts": {
+    "version": "npm run logs && git add CHANGELOG.md && git commit -m \"build: update changelog\"",
     "lint": "standard",
     "test": "nyc ava test/js/index.js test/rc/index.js test/pkg/index.js",
     "logs": "standard-changelog > CHANGELOG.md",
     "docs": "jsdoc2md index.js > INDEX.md",
     "clean": "rm -rf .nyc_output coverage jsdoc-api dmd",
-    "start": "sudo npm run clean && npm run lint && sudo npm test"
+    "start": "npm run clean && npm run lint && npm test"
   },
   "dependencies": {
     "cosmiconfig": "^2.1.0",
     "posthtml-load-options": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
-    "coveralls": "^2.11.15",
-    "htmlnano": "^0.1.5",
-    "jsdoc-to-markdown": "^2.0.0",
-    "nyc": "^8.4.0",
-    "posthtml": "^0.9.1",
-    "posthtml-content": "0.0.2",
+    "ava": "^3.12.1",
+    "coveralls": "^3.1.0",
+    "htmlnano": "^0.2.6",
+    "jsdoc-to-markdown": "^6.0.1",
+    "nyc": "^15.1.0",
+    "posthtml": "^0.13.3",
+    "posthtml-content": "0.0.3",
     "posthtml-include": "^1.1.0",
     "posthtml-pug": "^1.0.2",
     "posthtml-sugarml": "^1.0.0-alpha3",
-    "standard": "^8.4.0",
-    "standard-changelog": "0.0.1"
+    "standard": "^14.3.4",
+    "standard-changelog": "^2.0.24"
   },
   "ava": {
     "verbose": "true"

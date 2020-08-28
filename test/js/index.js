@@ -33,7 +33,9 @@ function posthtml (config, fix, log) {
 const posthtmlrc = require('../..')
 
 test('posthtml.config.js - {Object} - Parser SML', (t) => {
-  const ctx = {}
+  const ctx = {
+    cwd: __dirname
+  }
 
   const parser = require('posthtml-sugarml')()
 
@@ -45,7 +47,9 @@ test('posthtml.config.js - {Object} - Parser SML', (t) => {
 })
 
 test('posthtml.config.js - {Function} - Process SML', (t) => {
-  const ctx = {}
+  const ctx = {
+    cwd: __dirname
+  }
 
   return posthtmlrc(ctx).then((config) => {
     posthtml(config, 'index.sml', true)
@@ -65,7 +69,9 @@ test.skip('posthtml.config.js - {Function} - Process HTML', (t) => {
 })
 
 test('posthtml.config.js - {Function} - Render JS', (t) => {
-  const ctx = {}
+  const ctx = {
+    cwd: __dirname
+  }
 
   return posthtmlrc(ctx).then((config) => {
     t.is(config.options.render, undefined)
@@ -75,7 +81,9 @@ test('posthtml.config.js - {Function} - Render JS', (t) => {
 })
 
 test('posthtml.config.js - {Function} - Render JSX', (t) => {
-  const ctx = {}
+  const ctx = {
+    cwd: __dirname
+  }
 
   return posthtmlrc(ctx).then((config) => {
     t.is(config.options.render, undefined)
