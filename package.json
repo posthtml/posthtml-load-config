@@ -13,7 +13,7 @@
     "logs": "standard-changelog > CHANGELOG.md",
     "docs": "jsdoc2md index.js > INDEX.md",
     "clean": "rm -rf .nyc_output coverage jsdoc-api dmd",
-    "start": "sudo npm run clean && npm run lint && sudo npm test"
+    "start": "npm run clean && npm run lint && npm test"
   },
   "dependencies": {
     "cosmiconfig": "^2.1.0",
@@ -30,7 +30,7 @@
     "posthtml-include": "^1.1.0",
     "posthtml-pug": "^1.0.2",
     "posthtml-sugarml": "^1.0.0-alpha3",
-    "standard": "^8.4.0",
+    "standard": "^14.3.4",
     "standard-changelog": "0.0.1"
   },
   "ava": {
