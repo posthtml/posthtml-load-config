@@ -6,7 +6,7 @@ module.exports = (ctx) => {
     plugins: {
       'posthtml-include': {},
       'posthtml-content': false,
-      'htmlnano': ctx.env === 'production' ? {} : false
+      htmlnano: ctx.env === 'production' ? {} : false
     }
   }
 }
