@@ -4,7 +4,7 @@ module.exports = (ctx) => {
     from: './fixtures/index.sml',
     to: './expect/index.html',
     plugins: {
-      'posthtml-include': false,
+      'posthtml-include': {},
       'posthtml-content': false,
       'htmlnano': ctx.env === 'production' ? {} : false
     }
