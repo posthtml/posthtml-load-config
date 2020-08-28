@@ -8,6 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "version": "npm run logs && git add CHANGELOG.md && git commit -m \"build: update changelog\"",
     "lint": "standard",
     "test": "nyc ava test/js/index.js test/rc/index.js test/pkg/index.js",
     "logs": "standard-changelog > CHANGELOG.md",
