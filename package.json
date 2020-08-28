@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Autoload Config for PostHTML",
   "engines": {
-    "node": ">=4",
-    "npm": ">=3"
+    "node": ">=10"
   },
   "main": "index.js",
   "scripts": {
